@@ -1,0 +1,19 @@
+body, canvas {
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  width: 100%;
+  height: calc(100vh - 4px);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+svg{
+  width: 100%;
+  height: 100%;
+}

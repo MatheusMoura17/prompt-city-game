@@ -12,6 +12,10 @@ export class Scene {
     }
   }
 
+  public findGameObjectByName(name: string) {
+    return this.gameObjects.find((go) => go.name === name);
+  }
+
   public removeGameObject(gameObject: GameObject) {
     const index = gameObject.id;
     this.gameObjects.splice(index, 1);

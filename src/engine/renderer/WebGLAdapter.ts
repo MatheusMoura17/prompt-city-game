@@ -103,11 +103,14 @@ export class WebGLAdapter {
     const vertexPositionBuffer = this.gl.createBuffer();
     const size = 2; // Tamanho da posição (2D)
 
-    // Criação do buffer para os vértices da forma
+    // Concatenando todos os vértices de todos os triângulos em uma única lista
+    const allVertices = shapes.flatMap(shape => shape.triangles.flat());
+
+    // Criação do buffer para os vértices das formas
     this.gl.bindBuffer(this.gl.ARRAY_BUFFER, vertexPositionBuffer);
     this.gl.bufferData(
       this.gl.ARRAY_BUFFER,
-      new Float32Array(shapes[0].vertex), // Supomos que todas as shapes têm a mesma geometria
+      new Float32Array(allVertices), // Passando todos os vértices concatenados
       this.gl.STATIC_DRAW
     );
     this.gl.useProgram(this.shaderProgram);
@@ -202,7 +205,9 @@ export class WebGLAdapter {
     );
 
     // Finalmente, desenhando as formas usando instancing
+    const numVerticesPerShape = shapes[0].triangles.length * 3; // 3 vértices por triângulo
     const numInstances = shapes.length;
-    this.gl.drawArraysInstanced(this.gl.TRIANGLES, 0, 3, numInstances);
+    this.gl.drawArraysInstanced(this.gl.TRIANGLES, 0, numVerticesPerShape, numInstances);
   }
+
 }

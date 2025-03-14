@@ -7,7 +7,8 @@ export enum EHumanState {
 export class HumanStats extends Component {
   public color: number[] = [];
   public borderColor: number[] = [];
-  public speed = 0.05;
+  public coins = 0;
+  public speed = Math.random();
   public looseHealthSpeed = 5;
   public looseHealthAmount = 1;
   public maxHealth = 100;

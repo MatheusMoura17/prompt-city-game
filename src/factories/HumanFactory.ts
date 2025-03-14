@@ -1,6 +1,6 @@
 import { HumanColorRandomizer } from "../components/human/HumanColorRandomizer";
+import { HumanFollowCrate } from "../components/human/HumanFollowCrate";
 import { HumanHealthLoose } from "../components/human/HumanHealthLoose";
-// import { HumanHealthRenderer } from "../components/human/HumanHealthRenderer";
 import { HumanMovement } from "../components/human/HumanMovement";
 import { HumanRenderer } from "../components/human/HumanRenderer";
 import { HumanStats } from "../components/human/HumanStats";
@@ -19,10 +19,10 @@ export class HumanFactory {
       .addComponent(new Transform(position, size, rotation))
       .addComponent(new HumanStats())
       .addComponent(new HumanColorRandomizer())
-      .addComponent(new HumanMovement())
-      // .addComponent(new HumanHealthLoose())
+      .addComponent(new HumanFollowCrate())
+      // .addComponent(new HumanMovement())
+      .addComponent(new HumanHealthLoose())
       .addComponent(new HumanRenderer())
-      // .addComponent(new HumanHealthRenderer())
       .build();
 
     return human;

@@ -1,6 +1,11 @@
-import { IDrawCircleParams } from "./CircleDrawer";
 import { Shape } from "./Shape";
 import { WebGLAdapter } from "./WebGLAdapter";
+
+export interface IDrawShapeParams {
+  x: number;
+  y: number;
+  color: number[];
+}
 
 export class Renderer {
   private ctx: WebGL2RenderingContext;
@@ -27,14 +32,16 @@ export class Renderer {
     return createdContext;
   }
 
-  public drawCircle(drawCircleParams: IDrawCircleParams) {
-    this.shapeBuffer.push(
-      Shape.triangle(
-        drawCircleParams.x,
-        drawCircleParams.y,
-        drawCircleParams.color
-      )
-    );
+  public drawTriangle({ x, y, color }: IDrawShapeParams) {
+    this.shapeBuffer.push(Shape.triangle(x, y, color));
+  }
+
+  public drawCircle({ x, y, color }: IDrawShapeParams) {
+    this.shapeBuffer.push(Shape.circle(x, y, color));
+  }
+
+  public drawSquare({ x, y, color }: IDrawShapeParams) {
+    this.shapeBuffer.push(Shape.square(x, y, color));
   }
 
   public clear() {

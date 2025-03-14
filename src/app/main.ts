@@ -1,9 +1,14 @@
 import { Runtime } from "../engine/Runtime";
+import { CrateFactory } from "../factories/CrateFactory";
 import { HumanFactory } from "../factories/HumanFactory";
 import "./style.css";
 
-for (let i = 0; i < 100; i++) {
-  HumanFactory.create("Josh");
-}
+CrateFactory.create("crate");
+
+
+setInterval(()=>{
+  HumanFactory.create("josh");
+},100)
+
 
 Runtime.instance.start();
